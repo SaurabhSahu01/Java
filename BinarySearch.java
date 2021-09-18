@@ -1,17 +1,17 @@
-// implementation of binary search using recursion 
+// this is the iterative method of binary search implementation 
 
 public class BinarySearch{
     public static void main(String[] args){
-        
-        int[] array = {1,2,3,4,5,6};
+        int[] array = {1,3,5,7,9};
 
-        System.out.println(binarySearch(array, 3, 5, 0));
-
+        System.out.println(binarSearch(array,4));
     }
 
-    public static int binarySearch(int[] array, int key, int high, int low){
-        
-        if(low <= high){
+    public static int binarSearch(int[] array, int key){
+        int low = 0;
+        int high = array.length - 1;
+
+        while(high >= low){
             int mid = (high + low)/2;
 
             if(key == array[mid]){
@@ -20,13 +20,12 @@ public class BinarySearch{
 
             else if(key > array[mid]){
                 low = mid + 1;
-                return binarySearch(array, key, high, low);
             }
 
-            high = mid - 1;
-            return binarySearch(array, key, high, low);
+            else{
+                high = mid - 1;
+            }
         }
-
-        return  - 1;
+        return -low - 1;
     }
 }
